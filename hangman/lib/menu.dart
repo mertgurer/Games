@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 
-class MenuButtons extends StatelessWidget {
-  const MenuButtons({Key? key}) : super(key: key);
+import './word_input.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.blue.shade100,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Button(name: 'Versus'),
-          Button(name: 'AI'),
-          Button(name: 'Exit'),
+          MenuLogo(),
+          GameButton(name: 'Play'),
         ],
       ),
     );
   }
 }
 
-class Button extends StatelessWidget {
+class GameButton extends StatelessWidget {
   final String name;
 
-  const Button({Key? key, required this.name}) : super(key: key);
+  const GameButton({Key? key, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,16 @@ class Button extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 150),
       child: ElevatedButton(
-        onPressed: null,
+        style: ElevatedButton.styleFrom(
+          primary: Colors.blue.shade300,
+          onPrimary: Colors.black,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WordInput()),
+          );
+        },
         child: Text(name),
       ),
     );
