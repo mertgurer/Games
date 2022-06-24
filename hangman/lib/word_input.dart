@@ -23,7 +23,7 @@ class WordInput extends StatelessWidget {
             TextField(
               controller: _textInput,
               decoration: InputDecoration(
-                hintText: 'Secret word...',
+                hintText: 'Secret word',
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   onPressed: () {

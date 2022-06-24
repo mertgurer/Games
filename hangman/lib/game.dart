@@ -1,29 +1,46 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:hangman/end.dart';
+import 'package:hangman/menu.dart';
 
 class Game extends StatefulWidget {
   final String secret_word;
   const Game({Key? key, required this.secret_word}) : super(key: key);
 
   @override
-  State<Game> createState() => _GameState(secret_word);
+  State<Game> createState() => _GameState();
 }
 
 class _GameState extends State<Game> {
-  final String secret_word;
+  var lives = 7;
   var first = true;
   var index = -1;
-  var _guess = TextEditingController();
+  final _guess_input = TextEditingController();
+  String _guess = '';
 
-  _GameState(this.secret_word);
+  void check_letter(String guess) {
+    var word = widget.secret_word;
+    if (word.contains(guess)) {
+    } else {
+      lives--;
+      print(lives);
+    }
+    if (lives <= 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const End()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<String> letters = secret_word.split('');
+    List<String> letters = widget.secret_word.split('');
     var letter_info =
-        List<bool>.generate(secret_word.length, (int index) => false);
+        List<bool>.generate(widget.secret_word.length, (int index) => true);
     index = -1;
+    first = true;
 
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
@@ -53,9 +70,29 @@ class _GameState extends State<Game> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text('hi'),
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(110, 70, 10, 0),
+                    child: TextField(
+                      controller: _guess_input,
+                      decoration: const InputDecoration(
+                        hintText: 'Guess a letter',
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 70, 30, 10),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      _guess = _guess_input.text;
+                      check_letter(_guess);
+                    },
+                    backgroundColor: Colors.blue.shade200,
+                    child: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                )
               ],
             ),
           ],
