@@ -87,6 +87,7 @@ class _GameState extends State<Game> {
                   child: FloatingActionButton(
                     onPressed: () {
                       _guess = _guess_input.text;
+                      _guess_input.clear();
                       check_letter(_guess);
                     },
                     backgroundColor: Colors.blue.shade200,
