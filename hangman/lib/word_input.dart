@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 import './game.dart';
@@ -44,6 +46,7 @@ class WordInput extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     _secret_word = _textInput.text;
+                    _textInput.clear();
                     if (_secret_word != '') {
                       Navigator.push(
                         context,
