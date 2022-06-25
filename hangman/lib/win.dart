@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hangman/menu.dart';
 
-class End extends StatelessWidget {
+import 'menu.dart';
+
+class Win extends StatelessWidget {
   final String word;
-  const End({Key? key, required this.word}) : super(key: key);
+  const Win({Key? key, required this.word}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class End extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Game Over!',
+              'Congratulations!',
               style: TextStyle(
-                color: Colors.red,
+                color: Colors.green,
                 fontSize: 35,
                 fontWeight: FontWeight.w700,
               ),
@@ -27,7 +28,7 @@ class End extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'The word was ',
+                    'The word is ',
                     style: TextStyle(
                       fontSize: 20,
                     ),
