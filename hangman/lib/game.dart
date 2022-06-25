@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:hangman/end.dart';
@@ -8,12 +8,15 @@ class Game extends StatefulWidget {
   final String secret_word;
   late List<bool> letter_info;
   late List<String> letters;
-  var lifes = 7;
+  static late List<String> used_letters;
+  static late int lifes;
   var found = false;
 
   Game({Key? key, required this.secret_word}) : super(key: key) {
     letter_info = List<bool>.generate(secret_word.length, (int index) => false);
     letters = secret_word.split('');
+    used_letters = List<String>.generate(7, (int index) => '');
+    lifes = 7;
   }
 
   @override
@@ -21,53 +24,27 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
-  var first = true;
-  var index = -1;
   String _guess = '';
-
   final _guess_input = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    first = true;
-    index = -1;
-
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text('hanging man'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...(widget.letters).map((c) {
-                  index++;
-                  if (c.contains(RegExp(r'[A-Za-z]'))) {
-                    if (first) {
-                      first = false;
-                      if (widget.letter_info[index]) {
-                        return Square(c: c.toUpperCase());
-                      }
-                    } else {
-                      if (widget.letter_info[index]) {
-                        return Square(c: c.toLowerCase());
-                      }
-                    }
-                  } else {
-                    first = true;
-                    return Empty(c: c);
-                  }
-                  return const Square(c: '');
-                }).toList()
-              ],
-            ),
+            TopBar(),
+            HintBoxes(widget.letters, widget.letter_info),
+            // input field
             Row(
               children: [
                 Expanded(
+                  // text field
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(110, 70, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(70, 70, 15, 0),
                     child: TextField(
                       controller: _guess_input,
                       decoration: const InputDecoration(
@@ -78,14 +55,13 @@ class _GameState extends State<Game> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 70, 30, 10),
+                  // confirm button
+                  padding: const EdgeInsets.fromLTRB(15, 70, 70, 0),
                   child: FloatingActionButton(
                     onPressed: () {
                       _guess = _guess_input.text;
                       _guess_input.clear();
-                      if (_guess != '' &&
-                          (_guess.toLowerCase() == widget.secret_word ||
-                              _guess.contains(RegExp(r'^[A-Za-z]+$')))) {
+                      if (_guess != '') {
                         check_letter(_guess, widget.letters);
                         check_game(widget.letters);
                       }
@@ -107,11 +83,16 @@ class _GameState extends State<Game> {
     var word = widget.secret_word;
     // if the guess is the whole name
     if (guess.length > 1) {
-      if (guess.toLowerCase() == widget.secret_word.toLowerCase()) {
+      if (guess.toLowerCase() == word.toLowerCase()) {
         widget.found = true;
       } // if whole word guess is wrong
       else {
-        widget.lifes--;
+        if (guess.length != word.length) {
+          return widget.letter_info;
+        }
+        setState(() {
+          Game.lifes--;
+        });
       }
     } // if the guess is a single letter
     else if (word.contains(guess)) {
@@ -124,7 +105,15 @@ class _GameState extends State<Game> {
       }
     } // if the letter guess is wrong
     else {
-      widget.lifes--;
+      for (int i = 0; i < 7; i++) {
+        if (Game.used_letters[i] == guess) {
+          return widget.letter_info;
+        }
+      }
+      setState(() {
+        Game.used_letters[7 - Game.lifes] = guess;
+        Game.lifes--;
+      });
     }
     return widget.letter_info;
   }
@@ -136,7 +125,7 @@ class _GameState extends State<Game> {
         context,
         MaterialPageRoute(builder: (context) => Win(word: widget.secret_word)),
       );
-    } else if (widget.lifes <= 0) {
+    } else if (Game.lifes <= 0) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => End(word: widget.secret_word)),
@@ -152,6 +141,94 @@ class _GameState extends State<Game> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Win(word: widget.secret_word)),
+    );
+  }
+}
+
+class HintBoxes extends StatelessWidget {
+  var first = true;
+  var index = -1;
+  late List<bool> letter_info;
+  late List<String> letters;
+
+  HintBoxes(this.letters, this.letter_info, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    first = true;
+    index = -1;
+
+    return Row(
+      // hint boxes
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ...(letters).map((c) {
+          index++;
+          if (c.contains(RegExp(r'[A-Za-z]'))) {
+            if (first) {
+              first = false;
+              if (letter_info[index]) {
+                return Square(c: c.toUpperCase());
+              }
+            } else {
+              if (letter_info[index]) {
+                return Square(c: c.toLowerCase());
+              }
+            }
+          } else {
+            first = true;
+            return Empty(c: c);
+          }
+          return const Square(c: '');
+        }).toList()
+      ],
+    );
+  }
+}
+
+class TopBar extends StatelessWidget {
+  const TopBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      // top bar
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+      child: Row(
+        children: [
+          // heart info
+          Icon(
+            Icons.heart_broken_rounded,
+            size: 30,
+            color: Colors.red.shade900,
+          ),
+          Text(
+            ' ${Game.lifes}',
+            style: const TextStyle(fontSize: 21),
+          ),
+          // used letters
+          const Spacer(),
+
+          ...(Game.used_letters).map((l) {
+            if (l != '') {
+              l = '$l ';
+            }
+            return Text(
+              l.toUpperCase(),
+              style: const TextStyle(fontSize: 21),
+            );
+          }).toList(),
+
+          const Padding(
+            padding: EdgeInsets.fromLTRB(3, 0, 0, 3),
+            child: Icon(
+              Icons.block,
+              size: 30,
+              color: Colors.red,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

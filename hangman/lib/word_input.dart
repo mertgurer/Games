@@ -49,10 +49,12 @@ class WordInput extends StatelessWidget {
                     _textInput.clear();
                     if (_secret_word != '') {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Game(secret_word: _secret_word)));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Game(secret_word: _secret_word.toLowerCase()),
+                        ),
+                      );
                     }
                   },
                   child: const Text('Lock Secret Word'),

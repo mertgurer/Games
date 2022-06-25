@@ -35,6 +35,8 @@ class _HomePageState extends State<HomePage> {
               foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
               splashFactory: NoSplash.splashFactory,
               enableFeedback: false,
+              mouseCursor: MaterialStateProperty.all<MouseCursor>(
+                  SystemMouseCursors.basic),
               overlayColor: MaterialStateColor.resolveWith(
                   (states) => Colors.blue.shade100),
             ),
