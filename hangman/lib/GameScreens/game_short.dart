@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:hangman/end.dart';
-import 'package:hangman/win.dart';
+import 'package:hangman/LosePage/end.dart';
+import 'package:hangman/WinPage/win.dart';
 
 class Game extends StatefulWidget {
   final String secret_word;

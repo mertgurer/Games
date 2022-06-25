@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './menu.dart';
+import 'HomePage/menu.dart';
 
 void main() {
   runApp(const Hangman());

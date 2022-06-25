@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import './game.dart';
+import '../GameScreens/game_short.dart';
 
 class WordInput extends StatelessWidget {
   WordInput({Key? key}) : super(key: key);
