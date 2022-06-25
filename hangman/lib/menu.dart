@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import './word_input.dart';
 
 class HomePage extends StatefulWidget {
+  static var counter = 0;
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -14,8 +15,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var easter_egg = 'Hangman';
 
-  var counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +23,23 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton(
-              onPressed: () {
-                counter++;
-                print(counter);
-                if (counter == 20) {
-                  setState(() {
-                    easter_egg = 'hangmang';
-                  });
-                }
-              },
-              style: TextButton.styleFrom(primary: Colors.black),
-              child: MenuLogo(easter_egg: easter_egg)),
+            onPressed: () {
+              HomePage.counter++;
+              if (HomePage.counter == 20) {
+                setState(() {
+                  easter_egg = 'hangmang';
+                });
+              }
+            },
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+              splashFactory: NoSplash.splashFactory,
+              enableFeedback: false,
+              overlayColor: MaterialStateColor.resolveWith(
+                  (states) => Colors.blue.shade100),
+            ),
+            child: MenuLogo(easter_egg: easter_egg),
+          ),
           const GameButton(name: 'Play'),
         ],
       ),
@@ -58,6 +63,7 @@ class GameButton extends StatelessWidget {
           onPrimary: Colors.black,
         ),
         onPressed: () {
+          HomePage.counter = 0;
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => WordInput()),
@@ -80,7 +86,7 @@ class MenuLogo extends StatelessWidget {
       child: Text(
         easter_egg,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w200),
+        style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w100),
       ),
     );
   }
