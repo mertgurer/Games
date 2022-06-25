@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-import '../GameScreens/game_short.dart';
+import 'Widgets/back_button.dart';
+import 'Widgets/send_button.dart';
 
 class WordInput extends StatelessWidget {
-  WordInput({Key? key}) : super(key: key);
+  static var textInput = TextEditingController();
 
-  final _textInput = TextEditingController();
-  String _secret_word = '';
+  const WordInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,13 @@ class WordInput extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: _textInput,
+              controller: textInput,
               decoration: InputDecoration(
                 hintText: 'Secret word',
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   onPressed: () {
-                    _textInput.clear();
+                    textInput.clear();
                   },
                   icon: const Icon(Icons.clear),
                 ),
@@ -35,30 +35,10 @@ class WordInput extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Back'),
-                ),
-                const Spacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    _secret_word = _textInput.text;
-                    _textInput.clear();
-                    if (_secret_word != '') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              Game(secret_word: _secret_word.toLowerCase()),
-                        ),
-                      );
-                    }
-                  },
-                  child: const Text('Lock Secret Word'),
-                ),
+              children: const [
+                BackHomeButton(),
+                Spacer(),
+                SendButton(),
               ],
             )
           ],
