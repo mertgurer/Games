@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../SetupScreen/word_input.dart';
-
 class GameButton extends StatelessWidget {
   final String name;
+  final void Function(BuildContext context) next;
 
-  const GameButton({Key? key, required this.name}) : super(key: key);
+  const GameButton({Key? key, required this.name, required this.next})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,7 @@ class GameButton extends StatelessWidget {
           onPrimary: Colors.black,
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const WordInput()),
-          );
+          next(context);
         },
         child: Text(name),
       ),

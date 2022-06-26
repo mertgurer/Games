@@ -1,8 +1,6 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
-import 'Widgets/back_button.dart';
+import 'Widgets/back_button_1.dart';
 import 'Widgets/send_button.dart';
 
 class WordInput extends StatelessWidget {
@@ -38,7 +36,7 @@ class WordInput extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const BackHomeButton(),
+                  const BackHomeButton1(),
                   const Spacer(),
                   SendButton(),
                 ],

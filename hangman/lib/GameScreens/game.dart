@@ -77,7 +77,8 @@ class _GameState extends State<Game> {
                             check_game(Game.letters);
                           }
                         },
-                        backgroundColor: Colors.blue.shade200,
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.blue.shade300,
                         child: const Icon(Icons.keyboard_arrow_right),
                       ),
                     ),

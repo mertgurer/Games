@@ -8,6 +8,10 @@ class RetrunButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.blue.shade300,
+        onPrimary: Colors.black,
+      ),
       onPressed: () {
         Navigator.push(
           context,

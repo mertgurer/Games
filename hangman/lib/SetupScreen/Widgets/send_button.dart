@@ -12,6 +12,8 @@ class SendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          primary: Colors.blue.shade300, onPrimary: Colors.black),
       onPressed: () {
         word = WordInput.textInput.text;
         WordInput.textInput.clear();
