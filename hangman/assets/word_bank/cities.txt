@@ -1,0 +1,53 @@
+istanbul
+ankara
+izmir
+amsterdam
+london
+barcelona
+madrid
+tokyo
+beijing
+budapest
+buenos aires
+cape town
+florence
+havana
+hong kong
+new york
+mexico City
+paris
+prague
+toronto
+rio de janerio
+rome
+seoul
+seville
+sydney
+venice
+vienna
+zurich
+berlin
+hamburg
+dublin
+oslo
+warsaw
+lisbon
+monaco
+moscow
+kiev
+bogota
+santo domingo
+panama City
+las vegas
+munich
+milan
+cologne
+los angeles
+chicago
+columbia
+valencia
+athens
+helsinki
+denver
+palermo
+nairobi
