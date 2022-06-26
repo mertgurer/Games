@@ -17,8 +17,6 @@ class HintBoxSelect extends StatelessWidget {
         word_count++;
       }
     }
-    print(letters);
-
     // == 1 word inputs ==
     if (word_count == 1) {
       // 1 line
