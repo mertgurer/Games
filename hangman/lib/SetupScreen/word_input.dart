@@ -12,36 +12,39 @@ class WordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade100,
-      body: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: textInput,
-              decoration: InputDecoration(
-                hintText: 'Secret word',
-                border: const OutlineInputBorder(),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    textInput.clear();
-                  },
-                  icon: const Icon(Icons.clear),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade100,
+        body: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: textInput,
+                decoration: InputDecoration(
+                  hintText: 'Secret word',
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      textInput.clear();
+                    },
+                    icon: const Icon(Icons.clear),
+                  ),
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const BackHomeButton(),
-                const Spacer(),
-                SendButton(),
-              ],
-            )
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const BackHomeButton(),
+                  const Spacer(),
+                  SendButton(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

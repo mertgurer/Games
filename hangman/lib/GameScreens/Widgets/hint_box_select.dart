@@ -30,7 +30,7 @@ class HintBoxSelect extends StatelessWidget {
       if (letters.length <= 8) {
         return HintBoxes(letters, letter_info, -1);
       }
-      // 2 lines
+      // 2 linesf
       else if (letters.length <= 17) {
         for (int i = 0; i < letters.length; i++) {
           if (letters[i] == ' ') {

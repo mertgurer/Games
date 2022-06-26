@@ -9,23 +9,26 @@ class Win extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade100,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Congratulations!',
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 35,
-                fontWeight: FontWeight.w700,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade100,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Congratulations!',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 35,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-            WordReveal(word: word),
-            const RetrunButton(),
-          ],
+              WordReveal(word: word),
+              const RetrunButton(),
+            ],
+          ),
         ),
       ),
     );

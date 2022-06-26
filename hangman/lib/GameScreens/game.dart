@@ -32,56 +32,59 @@ class _GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade100,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TopBar(),
-              Image(
-                image: AssetImage('assets/zuko.jpg'),
-                height: 200,
-                width: 200,
-              ),
-              HintBoxSelect(Game.letters, widget.letter_info),
-              // input field
-              Row(
-                children: [
-                  Expanded(
-                    // text field
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(70, 20, 15, 0),
-                      child: TextField(
-                        controller: Game.guess_input,
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(),
-                          hintText: 'Guess a letter',
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade100,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TopBar(),
+                Image(
+                  image: AssetImage('assets/zuko.jpg'),
+                  height: 150,
+                  width: 150,
+                ),
+                HintBoxSelect(Game.letters, widget.letter_info),
+                // input field
+                Row(
+                  children: [
+                    Expanded(
+                      // text field
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(100, 20, 15, 0),
+                        child: TextField(
+                          controller: Game.guess_input,
+                          decoration: const InputDecoration(
+                            border: UnderlineInputBorder(),
+                            hintText: 'Guess a letter',
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    // confirm button
-                    padding: const EdgeInsets.fromLTRB(15, 20, 70, 0),
-                    child: FloatingActionButton(
-                      onPressed: () {
-                        _guess = Game.guess_input.text;
-                        Game.guess_input.clear();
-                        if (_guess != '') {
-                          check_letter(_guess, Game.letters);
-                          check_game(Game.letters);
-                        }
-                      },
-                      backgroundColor: Colors.blue.shade200,
-                      child: const Icon(Icons.keyboard_arrow_right),
+                    Padding(
+                      // confirm button
+                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          _guess = Game.guess_input.text;
+                          Game.guess_input.clear();
+                          if (_guess != '') {
+                            check_letter(_guess, Game.letters);
+                            check_game(Game.letters);
+                          }
+                        },
+                        backgroundColor: Colors.blue.shade200,
+                        child: const Icon(Icons.keyboard_arrow_right),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

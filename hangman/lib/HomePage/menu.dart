@@ -10,14 +10,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade100,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          MenuLogo(),
-          const GameButton(name: 'Play'),
-        ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade100,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MenuLogo(),
+            const GameButton(name: 'Play'),
+          ],
+        ),
       ),
     );
   }
