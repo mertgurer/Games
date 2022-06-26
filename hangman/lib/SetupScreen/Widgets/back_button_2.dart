@@ -10,7 +10,6 @@ class BackHomeButton2 extends StatelessWidget {
         Navigator.pop(context);
       },
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(130, 0),
         primary: Colors.blue.shade300,
         onPrimary: Colors.black,
       ),

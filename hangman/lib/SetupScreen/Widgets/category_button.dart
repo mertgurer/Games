@@ -19,7 +19,7 @@ class CategoryButton extends StatelessWidget {
         pick_category(context, pick);
       },
       style: ElevatedButton.styleFrom(
-          fixedSize: const Size(100, 0),
+          fixedSize: const Size(110, 0),
           primary: Colors.blue.shade300,
           onPrimary: Colors.black),
       child: Text(name),
@@ -51,7 +51,13 @@ class CategoryButton extends StatelessWidget {
         words.add(word_file.substring(start, i - 1));
         start = i + 1;
       }
+      // if its the last word
+      else if (i == word_file.length - 1) {
+        words.add(word_file.substring(start, i + 1));
+      }
     }
+
+    print(words);
 
     // pick a word and send it to the game
     Navigator.push(
