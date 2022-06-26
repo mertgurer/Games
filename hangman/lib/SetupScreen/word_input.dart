@@ -15,7 +15,7 @@ class WordInput extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(40.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,9 +35,9 @@ class WordInput extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                BackHomeButton(),
-                Spacer(),
+              children: [
+                const BackHomeButton(),
+                const Spacer(),
                 SendButton(),
               ],
             )

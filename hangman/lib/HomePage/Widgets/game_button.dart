@@ -20,7 +20,7 @@ class GameButton extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => WordInput()),
+            MaterialPageRoute(builder: (context) => const WordInput()),
           );
         },
         child: Text(name),

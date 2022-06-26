@@ -1,23 +1,25 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:hangman/SetupScreen/word_input.dart';
 
-import '../../GameScreens/game_short.dart';
+import 'package:hangman/SetupScreen/word_input.dart';
+import '../../GameScreens/game.dart';
 
 class SendButton extends StatelessWidget {
-  const SendButton({Key? key}) : super(key: key);
+  String word = '';
+  SendButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (WordInput.textInput.text != '') {
+        word = WordInput.textInput.text;
+        WordInput.textInput.clear();
+        if (word != '') {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  Game(secret_word: WordInput.textInput.text.toLowerCase()),
+              builder: (context) => Game(secret_word: word.toLowerCase()),
             ),
           );
         }
