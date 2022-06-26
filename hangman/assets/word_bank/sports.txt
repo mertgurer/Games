@@ -3,3 +3,39 @@ table tennis
 baseball
 football
 golf
+boxing
+skiing
+ice skating
+rugby
+pool
+darts
+bowling
+ice hockey
+surfing
+karate
+horse racing
+cycling
+archery
+fishing
+figure skating
+rock climbing
+sumo
+fencing
+weight lifting
+scuba diving
+judo
+wind surfing
+sky diving
+bungee jumping
+Body building
+handball
+kick boxing
+Kite Surfing
+Lacrosse
+Muay Thai
+Parkour
+Polo
+Rafting
+Rowing
+Sailing
+Water Polo
