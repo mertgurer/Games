@@ -57,8 +57,6 @@ class CategoryButton extends StatelessWidget {
       }
     }
 
-    print(words);
-
     // pick a word and send it to the game
     Navigator.push(
       context,

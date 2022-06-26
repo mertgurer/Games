@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/HomePage/menu.dart';
 
 import '../word_input.dart';
 
@@ -11,6 +12,7 @@ class BackHomeButton1 extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
         WordInput.textInput.clear();
+        HomePage.counter = 0;
       },
       style: ElevatedButton.styleFrom(
         primary: Colors.blue.shade300,

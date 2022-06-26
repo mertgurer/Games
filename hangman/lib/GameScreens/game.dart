@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:hangman/GameScreens/Widgets/hanging_man.dart';
 import '../EndScreens/win.dart';
 import '../EndScreens/lose.dart';
 import 'Widgets/hint_box_select.dart';
@@ -43,11 +44,7 @@ class _GameState extends State<Game> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TopBar(),
-                Image(
-                  image: AssetImage('assets/zuko.jpg'),
-                  height: 150,
-                  width: 150,
-                ),
+                HangingMan(),
                 HintBoxSelect(Game.letters, widget.letter_info),
                 // input field
                 Row(

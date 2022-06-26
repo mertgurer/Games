@@ -1,42 +1,30 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:hangman/HomePage/menu.dart';
 
-class MenuLogo extends StatefulWidget {
-  static var counter = 0;
-  static var easter_egg = 'Hangman';
+class MenuLogo extends StatelessWidget {
+  final void Function() press;
+  const MenuLogo({Key? key, required this.press}) : super(key: key);
 
-  MenuLogo({Key? key}) : super(key: key) {
-    counter = 0;
-    easter_egg = 'Hangman';
-  }
-
-  @override
-  State<MenuLogo> createState() => _MenuLogoState();
-}
-
-class _MenuLogoState extends State<MenuLogo> {
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        MenuLogo.counter++;
-        if (MenuLogo.counter >= 20) {
-          setState(() {
-            MenuLogo.easter_egg = 'hangmang';
-          });
-        }
-      },
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-        splashFactory: NoSplash.splashFactory,
-        enableFeedback: false,
-        mouseCursor:
-            MaterialStateProperty.all<MouseCursor>(SystemMouseCursors.basic),
-        overlayColor:
-            MaterialStateColor.resolveWith((states) => Colors.blue.shade100),
+    return SizedBox(
+      child: TextButton(
+        onPressed: () {
+          press();
+        },
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+          splashFactory: NoSplash.splashFactory,
+          enableFeedback: false,
+          mouseCursor:
+              MaterialStateProperty.all<MouseCursor>(SystemMouseCursors.basic),
+          overlayColor:
+              MaterialStateColor.resolveWith((states) => Colors.transparent),
+        ),
+        child: LogoText(easter_egg: HomePage.easter_egg),
       ),
-      child: LogoText(easter_egg: MenuLogo.easter_egg),
     );
   }
 }
@@ -47,13 +35,10 @@ class LogoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(0, 0, 0, 50),
-      child: Text(
-        easter_egg,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w100),
-      ),
+    return Text(
+      easter_egg,
+      textAlign: TextAlign.center,
+      style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w100),
     );
   }
 }

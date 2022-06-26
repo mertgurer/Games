@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/
     - assets/word_bank/
+    - assets/hanging/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

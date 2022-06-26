@@ -1,31 +1,56 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
 import 'package:hangman/SetupScreen/category_input.dart';
 import '../SetupScreen/word_input.dart';
+import 'Widgets/backgroun.dart';
 import 'Widgets/game_button.dart';
 import 'Widgets/menu_logo.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  static var counter = 0;
+  static var easter_egg = 'Hangman';
 
+  HomePage({Key? key}) : super(key: key) {
+    counter = 0;
+    easter_egg = 'Hangman';
+  }
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: Colors.blue.shade100,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MenuLogo(),
-            const GameButton(name: 'Play', next: get_word),
-            const GameButton(name: 'Solo', next: get_category),
-          ],
-        ),
+        body: Stack(children: [
+          BackGround(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MenuLogo(press: hidden_button),
+              const SizedBox(height: 50),
+              const GameButton(name: 'Play', next: get_word),
+              const GameButton(name: 'Solo', next: get_category),
+            ],
+          ),
+        ]),
       ),
     );
+  }
+
+  void hidden_button() {
+    HomePage.counter++;
+    if (HomePage.counter >= 50) {
+      setState(() {
+        HomePage.easter_egg = 'hangmang';
+      });
+    }
   }
 }
 

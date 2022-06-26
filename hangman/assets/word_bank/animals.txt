@@ -7,11 +7,11 @@ mouse
 hamster
 cow
 duck
-pig 
+pig
 goat
-crab 
-deer 
-bee 
+crab
+deer
+bee
 sheep
 fish
 turkey
