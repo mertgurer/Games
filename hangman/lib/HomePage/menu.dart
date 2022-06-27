@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
 
   void hidden_button() {
     HomePage.counter++;
-    if (HomePage.counter >= 50) {
+    if (HomePage.counter >= 31) {
       setState(() {
         HomePage.easter_egg = 'hangmang';
       });
