@@ -30,14 +30,19 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.blue.shade100,
         body: Stack(children: [
           BackGround(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MenuLogo(press: hidden_button),
-              const SizedBox(height: 50),
-              const GameButton(name: 'Play', next: get_word),
-              const GameButton(name: 'Solo', next: get_category),
-            ],
+          Center(
+            child: SizedBox(
+              width: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MenuLogo(press: hidden_button),
+                  const SizedBox(height: 50),
+                  const GameButton(name: 'Play', next: get_word),
+                  const GameButton(name: 'Solo', next: get_category),
+                ],
+              ),
+            ),
           ),
         ]),
       ),
