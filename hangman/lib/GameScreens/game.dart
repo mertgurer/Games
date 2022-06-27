@@ -70,7 +70,7 @@ class _GameState extends State<Game> {
                           _guess = Game.guess_input.text;
                           Game.guess_input.clear();
                           if (_guess != '') {
-                            check_letter(_guess, Game.letters);
+                            check_letter(_guess.toLowerCase(), Game.letters);
                             check_game(Game.letters);
                           }
                         },
@@ -94,7 +94,7 @@ class _GameState extends State<Game> {
     var word = widget.secret_word;
     // if the guess is the whole name
     if (guess.length > 1) {
-      if (guess.toLowerCase() == word.toLowerCase()) {
+      if (guess == word.toLowerCase()) {
         widget.found = true;
       } // if whole word guess is wrong
       else {
@@ -108,7 +108,7 @@ class _GameState extends State<Game> {
     } // if the guess is a single letter
     else if (word.contains(guess)) {
       for (int i = 0; i < letters.length; i++) {
-        if (letters[i].toLowerCase() == guess.toLowerCase()) {
+        if (letters[i].toLowerCase() == guess) {
           setState(() {
             widget.letter_info[i] = true;
           });
