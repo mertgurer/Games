@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:hangman/GameScreens/Widgets/game_backgorund.dart';
 
 import 'package:hangman/GameScreens/Widgets/hanging_man.dart';
 import '../EndScreens/win.dart';
@@ -37,54 +38,62 @@ class _GameState extends State<Game> {
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: Colors.blue.shade100,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                TopBar(),
-                HangingMan(),
-                HintBoxSelect(Game.letters, widget.letter_info),
-                // input field
-                Row(
+        body: Stack(children: [
+          GameBackGround(
+            secretWord: widget.secret_word,
+          ),
+          Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      // text field
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(100, 20, 15, 0),
-                        child: TextField(
-                          controller: Game.guess_input,
-                          decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            hintText: 'Guess a letter',
+                    TopBar(),
+                    HangingMan(),
+                    HintBoxSelect(Game.letters, widget.letter_info),
+                    // input field
+                    Row(
+                      children: [
+                        Expanded(
+                          // text field
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(100, 20, 15, 0),
+                            child: TextField(
+                              controller: Game.guess_input,
+                              decoration: const InputDecoration(
+                                border: UnderlineInputBorder(),
+                                hintText: 'Guess a letter',
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      // confirm button
-                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                      child: FloatingActionButton(
-                        onPressed: () {
-                          _guess = Game.guess_input.text;
-                          Game.guess_input.clear();
-                          if (_guess != '') {
-                            check_letter(_guess.toLowerCase(), Game.letters);
-                            check_game(Game.letters);
-                          }
-                        },
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.blue.shade300,
-                        child: const Icon(Icons.keyboard_arrow_right),
-                      ),
+                        Padding(
+                          // confirm button
+                          padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                          child: FloatingActionButton(
+                            onPressed: () {
+                              _guess = Game.guess_input.text;
+                              Game.guess_input.clear();
+                              if (_guess != '') {
+                                check_letter(
+                                    _guess.toLowerCase(), Game.letters);
+                                check_game(Game.letters);
+                              }
+                            },
+                            foregroundColor: Colors.black,
+                            backgroundColor: Colors.blue.shade300,
+                            child: const Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+        ]),
       ),
     );
   }
