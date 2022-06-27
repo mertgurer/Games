@@ -13,14 +13,15 @@ class Signature extends StatelessWidget {
           children: const [
             Text(
               'Game by',
-              style: TextStyle(fontWeight: FontWeight.normal),
+              style: TextStyle(
+                fontWeight: FontWeight.normal,
+                fontStyle: FontStyle.italic,
+              ),
               textAlign: TextAlign.center,
             ),
             Text(
               'Mert Gürer',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
               textAlign: TextAlign.end,
             ),
           ],
