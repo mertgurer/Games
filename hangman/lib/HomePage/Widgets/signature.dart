@@ -18,7 +18,9 @@ class Signature extends StatelessWidget {
             ),
             Text(
               'Mert Gürer',
-              style: TextStyle(fontWeight: FontWeight.w900),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.end,
             ),
           ],

@@ -30,7 +30,7 @@ class TopBar extends StatelessWidget {
               l = '$l ';
             }
             return Text(
-              l.toUpperCase(),
+              l.toLowerCase(),
               style: const TextStyle(fontSize: 21),
             );
           }).toList(),
