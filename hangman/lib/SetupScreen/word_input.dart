@@ -20,16 +20,19 @@ class WordInput extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: textInput,
-                decoration: InputDecoration(
-                  hintText: 'Secret word',
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      textInput.clear();
-                    },
-                    icon: const Icon(Icons.clear),
+              SizedBox(
+                width: 400,
+                child: TextField(
+                  controller: textInput,
+                  decoration: InputDecoration(
+                    hintText: 'Secret word',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        textInput.clear();
+                      },
+                      icon: const Icon(Icons.clear),
+                    ),
                   ),
                 ),
               ),

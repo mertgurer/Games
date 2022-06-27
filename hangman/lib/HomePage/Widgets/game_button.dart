@@ -14,6 +14,7 @@ class GameButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 150),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          //fixedSize: const Size(50, 30),
           primary: Colors.blue.shade300,
           onPrimary: Colors.black,
         ),
