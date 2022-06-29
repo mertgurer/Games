@@ -48,7 +48,7 @@ class CategoryButton extends StatelessWidget {
     // transfer file strig info to a string list
     for (int i = 0; i < word_file.length; i++) {
       if (word_file[i] == '\n') {
-        words.add(word_file.substring(start, i - 1));
+        words.add(word_file.substring(start, i));
         start = i + 1;
       }
       // if its the last word
