@@ -20,7 +20,7 @@ class HintBoxSelect extends StatelessWidget {
     // == 1 word inputs ==
     if (word_count == 1) {
       // 1 line
-      if (letters.length <= 10) {
+      if (letters.length <= 8) {
         return HintBoxes(letters, letter_info, -1);
       }
     }
