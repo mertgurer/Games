@@ -9,9 +9,25 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       // top bar
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+      padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
       child: Row(
         children: [
+          // leave button
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Game.guess_input.clear();
+            },
+            style: ButtonStyle(
+              overlayColor: MaterialStateColor.resolveWith(
+                  (states) => Colors.transparent),
+            ),
+            child: const Icon(
+              Icons.clear,
+              size: 35,
+              color: Colors.black,
+            ),
+          ),
           // heart info
           Icon(
             Icons.heart_broken_rounded,
