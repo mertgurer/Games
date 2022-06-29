@@ -45,11 +45,9 @@ class _GameState extends State<Game> {
           Center(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    TopBar(),
                     HangingMan(),
                     HintBoxSelect(Game.letters, widget.letter_info),
                     // input field
@@ -93,6 +91,7 @@ class _GameState extends State<Game> {
               ),
             ),
           ),
+          TopBar(),
         ]),
       ),
     );

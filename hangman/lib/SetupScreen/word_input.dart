@@ -24,10 +24,12 @@ class WordInput extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextField(
+                    maxLength: 35,
                     controller: textInput,
                     decoration: InputDecoration(
                       hintText: 'Secret word',
                       border: const OutlineInputBorder(),
+                      counterText: "",
                       suffixIcon: IconButton(
                         onPressed: () {
                           textInput.clear();

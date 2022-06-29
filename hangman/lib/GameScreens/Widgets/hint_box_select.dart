@@ -20,7 +20,7 @@ class HintBoxSelect extends StatelessWidget {
     // == 1 word inputs ==
     if (word_count == 1) {
       // 1 line
-      if (letters.length <= 8) {
+      if (letters.length <= 10) {
         return HintBoxes(letters, letter_info, -1);
       }
     }
@@ -30,7 +30,7 @@ class HintBoxSelect extends StatelessWidget {
       if (letters.length <= 8) {
         return HintBoxes(letters, letter_info, -1);
       }
-      // 2 linesf
+      // 2 lines
       else if (letters.length <= 17) {
         for (int i = 0; i < letters.length; i++) {
           if (letters[i] == ' ') {
