@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-class HintBoxes extends StatelessWidget {
+class HintBoxesSmall extends StatelessWidget {
   var first = true;
   late int index_mark;
   late List<bool> letter_info;
   late List<String> letters;
 
-  HintBoxes(this.letters, this.letter_info, this.index_mark, {Key? key})
+  HintBoxesSmall(this.letters, this.letter_info, this.index_mark, {Key? key})
       : super(key: key);
 
   @override
@@ -55,34 +55,34 @@ class Square extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 3),
-      height: 48,
-      width: 40,
+      margin: const EdgeInsets.symmetric(horizontal: 2),
+      height: 34,
+      width: 26.95,
       decoration: BoxDecoration(
         color: Colors.blue.shade200,
         border: const Border(
           left: BorderSide(
             color: Colors.white,
-            width: 3,
+            width: 2,
           ),
           right: BorderSide(
             color: Colors.white,
-            width: 3,
+            width: 2,
           ),
           top: BorderSide(
             color: Colors.white,
-            width: 3,
+            width: 2,
           ),
           bottom: BorderSide(
             color: Colors.white,
-            width: 3,
+            width: 2,
           ),
         ),
       ),
       alignment: AlignmentDirectional.center,
       child: Text(
         c,
-        style: const TextStyle(fontSize: 33),
+        style: const TextStyle(fontSize: 28),
       ),
     );
   }
@@ -95,8 +95,8 @@ class Empty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
-      width: 25,
+      height: 34,
+      width: 16.85,
       alignment: AlignmentDirectional.center,
       child: Text(
         c,

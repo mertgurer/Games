@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 void get_word(BuildContext context) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const WordInput()),
+    MaterialPageRoute(builder: (context) => WordInput()),
   );
 }
 

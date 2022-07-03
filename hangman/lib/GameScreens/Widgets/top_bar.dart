@@ -13,19 +13,20 @@ class TopBar extends StatelessWidget {
       child: Row(
         children: [
           // leave button
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Game.guess_input.clear();
-            },
-            style: ButtonStyle(
-              overlayColor: MaterialStateColor.resolveWith(
-                  (states) => Colors.transparent),
-            ),
-            child: const Icon(
-              Icons.clear,
-              size: 35,
-              color: Colors.black,
+          SizedBox(
+            width: 40,
+            child: IconButton(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+              onPressed: () {
+                Navigator.pop(context);
+                Game.guess_input.clear();
+              },
+              icon: const Icon(
+                Icons.clear,
+                size: 30,
+              ),
             ),
           ),
           // heart info

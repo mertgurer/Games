@@ -45,7 +45,7 @@ class _GameState extends State<Game> {
           Center(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 80, 20, 0),
                 child: Column(
                   children: [
                     HangingMan(),
