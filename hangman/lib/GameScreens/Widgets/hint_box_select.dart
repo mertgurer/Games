@@ -106,8 +106,8 @@ class HintBoxSelect extends StatelessWidget {
         }
       }
       // 2 lines small
-      else if (line_1.length + line_2.length <= 11 ||
-          line_2.length + line_3.length <= 11) {
+      else if ((line_3.length > 8 && line_1.length + line_2.length <= 11) ||
+          (line_1.length > 8 && line_2.length + line_3.length <= 11)) {
         // if first 2 word are short
         if (line_1.length + line_2.length <= 11) {
           line_1 = letters.sublist(0, second_space);
