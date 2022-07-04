@@ -19,7 +19,7 @@ class CategoryButton extends StatelessWidget {
         pick_category(context, pick);
       },
       style: ElevatedButton.styleFrom(
-          fixedSize: const Size(130, 0),
+          fixedSize: const Size(135, 0),
           primary: Colors.blue.shade300,
           onPrimary: Colors.black),
       child: Text(name),
