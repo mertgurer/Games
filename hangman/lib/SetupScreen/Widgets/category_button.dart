@@ -19,7 +19,7 @@ class CategoryButton extends StatelessWidget {
         pick_category(context, pick);
       },
       style: ElevatedButton.styleFrom(
-          fixedSize: const Size(110, 0),
+          fixedSize: const Size(130, 0),
           primary: Colors.blue.shade300,
           onPrimary: Colors.black),
       child: Text(name),
@@ -38,22 +38,27 @@ class CategoryButton extends StatelessWidget {
     } else if (pick == 1) {
       word_file = await rootBundle.loadString('assets/word_bank/tv.txt');
     } else if (pick == 2) {
-      word_file = await rootBundle.loadString('assets/word_bank/sports.txt');
+      word_file = await rootBundle.loadString('assets/word_bank/actors.txt');
     } else if (pick == 3) {
-      word_file = await rootBundle.loadString('assets/word_bank/animals.txt');
+      word_file = await rootBundle.loadString('assets/word_bank/supers.txt');
     } else if (pick == 4) {
+      word_file = await rootBundle.loadString('assets/word_bank/sports.txt');
+    } else if (pick == 5) {
+      word_file = await rootBundle.loadString('assets/word_bank/animals.txt');
+    } else if (pick == 6) {
       word_file = await rootBundle.loadString('assets/word_bank/cities.txt');
     }
 
     // transfer file strig info to a string list
     for (int i = 0; i < word_file.length; i++) {
-      if (word_file[i] == '\n') {
-        words.add(word_file.substring(start, i));
+      if (word_file[i] == '"') {
         start = i + 1;
-      }
-      // if its the last word
-      else if (i == word_file.length - 1) {
-        words.add(word_file.substring(start, i + 1));
+
+        do {
+          i++;
+        } while (word_file[i] != '"');
+
+        words.add(word_file.substring(start, i));
       }
     }
 

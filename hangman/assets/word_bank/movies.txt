@@ -1,60 +1,99 @@
-titanic
-pulp fiction
-american psycho
-edge of tomorrow
-ocean's eleven
-jurassic park
-mr. & mrs. smith
-iron man
-22 jump street
-frozen
-Good Will Hunting
-Dallas Buyers Club
-When Harry Met Sally
-Silver Linings Playbook
-Beauty and the Beast
-Peter Pan
-The Social Network
-The Hunger Games
-The Hobbit
-Maze Runner
-The Green Mile
-Wolf of Wall Street
-Good Morning, Vietnam
-The Lego Movie
-I Am Legend
-Twilight
-Deadpool
-logan
-x-men origins
-x-men dark phoenix
-Crazy, Stupid, Love
-The Dictator
-The Prestige
-Shrek
-Back to the Future
-cars 3
-The Notebook
-Ratatouille
-wall-e
-Toy Story
-Forrest Gump
-Planet of the Apes
-Shutter Island
-The Lion King
-Monsters, Inc
-Saving Private Ryan
-Dumb & Dumber
-Men in Black
-V for Vendetta
-Bruce Almighty
-Superbad
-The Dark Knight Rises
-The Truman Show
-Kung Fu Panda
-In Time
-Star wars 
-Se7en
-Fight Club
-Before Midnight
-la la land
+"titanic"
+"pulp fiction"
+"american psycho"
+"edge of tomorrow"
+"ocean's eleven"
+"jurassic park"
+"mr. & mrs. smith"
+"iron man"
+"22 jump street"
+"frozen"
+"Good Will Hunting"
+"Dallas Buyers Club"
+"When Harry Met Sally"
+"Silver Linings Playbook"
+"Beauty and the Beast"
+"Peter Pan"
+"The Social Network"
+"The Hunger Games"
+"The Hobbit"
+"Maze Runner"
+"The Green Mile"
+"Wolf of Wall Street"
+"Good Morning, Vietnam"
+"The Lego Movie"
+"I Am Legend"
+"Twilight"
+"Deadpool"
+"logan"
+"x-men origins"
+"x-men dark phoenix"
+"Crazy, Stupid, Love"
+"The Dictator"
+"The Prestige"
+"Shrek"
+"Back to the Future"
+"cars 3"
+"The Notebook"
+"Ratatouille"
+"wall-e"
+"Toy Story"
+"Forrest Gump"
+"Planet of the Apes"
+"Shutter Island"
+"The Lion King"
+"Monsters, Inc"
+"Saving Private Ryan"
+"Dumb & Dumber"
+"Men in Black"
+"V for Vendetta"
+"Bruce Almighty"
+"Superbad"
+"The Dark Knight Rises"
+"The Truman Show"
+"Kung Fu Panda"
+"In Time"
+"Star wars" 
+"Se7en"
+"Fight Club"
+"Before Midnight"
+"la la land"
+"dune"
+"fast and furious"
+"ready player one"
+"scream"
+"Requiem for a Dream"
+"black swan"
+"Top Gun: Maverick"
+"baywatch"
+"Mad Max: Fury Road"
+"2001: a space odyssey"
+"the godfather"
+"Indiana Jones"
+"up"
+"parasite"
+"rocky"
+"jaws"
+"Schindler's List"
+"the shining"
+"Dead Poets Society"
+"To Kill a Mockingbird"
+"Psycho"
+"12 Angry Men"
+"Edward Scissorhands"
+"The Shawshank Redemption"
+"Train to Busan"
+"inception"
+"Spirited Away"
+"finding nemo"
+"dunkrik"
+"whiplash"
+"inside out"
+"Taxi Driver"
+"Gone with the Wind"
+"The Wizard of Oz"
+"the seventh seal"
+"a clockwork orange"
+"Léon: The Professional"
+"The Pianist"
+"momento"
