@@ -1,24 +1,37 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class WordReveal extends StatelessWidget {
-  final String word;
-  const WordReveal({Key? key, required this.word}) : super(key: key);
+  String word;
+  WordReveal({Key? key, required this.word}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String wordShort;
+    String wordLong;
+
+    if (word.length <= 25) {
+      wordShort = allWordsCapitilize(word);
+      wordLong = '';
+    } else {
+      wordShort = '';
+      wordLong = allWordsCapitilize(word);
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'The word was ',
-            style: TextStyle(
+          Text(
+            'The word was $wordShort',
+            style: const TextStyle(
               fontSize: 20,
             ),
           ),
           Text(
-            allWordsCapitilize(word),
+            wordLong,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

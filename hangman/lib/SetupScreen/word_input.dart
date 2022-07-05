@@ -87,7 +87,7 @@ class _WordInputState extends State<WordInput> {
         }
         start = i + 1;
       } else if (i == word.length - 1) {
-        if (i - start > 12) {
+        if (i - start > 11) {
           WordInput.message = 'Maximum word length is 12 characters';
           return false;
         }

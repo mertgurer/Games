@@ -82,7 +82,7 @@ class Square extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       child: Text(
         c,
-        style: const TextStyle(fontSize: 28),
+        style: const TextStyle(fontSize: 25),
       ),
     );
   }
@@ -100,7 +100,7 @@ class Empty extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       child: Text(
         c,
-        style: const TextStyle(fontSize: 33),
+        style: const TextStyle(fontSize: 25),
       ),
     );
   }

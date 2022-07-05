@@ -11,7 +11,11 @@ class BackHomeButton1 extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         Navigator.pop(context);
+
         WordInput.textInput.clear();
+        WordInput.message = null;
+        WordInput.flag = false;
+
         HomePage.counter = 0;
       },
       style: ElevatedButton.styleFrom(

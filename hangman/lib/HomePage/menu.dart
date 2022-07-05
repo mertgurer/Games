@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hangman/HomePage/Widgets/signature.dart';
 
 import 'package:hangman/SetupScreen/category_input.dart';
@@ -25,6 +26,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(

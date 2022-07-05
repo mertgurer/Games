@@ -94,6 +94,6 @@
 "The Wizard of Oz"
 "the seventh seal"
 "a clockwork orange"
-"Léon: The Professional"
+"Leon: The Professional"
 "The Pianist"
 "momento"
