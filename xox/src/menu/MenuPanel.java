@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class MenuPanel extends JPanel implements ActionListener {
 
     Button playButton;
@@ -15,7 +14,7 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     public MenuPanel(){
         playButton = new Button((Window.getW()/2) - (Button.width/2), (Window.getH()/2), "Play with Friend");
-        playButton.addActionListener(this);
+        playButton.addActionListener(this); 
 
         computerButton = new Button((Window.getW()/2) - (Button.width/2), (Window.getH()/2 + Button.height + 10), "AI Challenge");
         computerButton.addActionListener(this);
@@ -30,8 +29,15 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if(e.getSource() == playButton){
             System.out.println("play");
+            
+            this.setVisible(false);
+
+            this.setVisible(true);
+
+            
         }
         else if(e.getSource() == computerButton){
             System.out.println("computer");
