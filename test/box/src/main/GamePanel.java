@@ -1,6 +1,6 @@
 package main;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -12,7 +12,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     int boxX = 100;
     int boxY = 100;
-    int boxSpeed = 4;
+    int boxW = 80;
+    int boxH = 80;  
+
+    int boxSpeedY = 0;   
+    final int maxSpeedY = 20;
+
+    boolean jumpFlag = false;
 
     public GamePanel(){
         this.setBackground(new Color(50, 50, 50));
@@ -44,8 +50,10 @@ public class GamePanel extends JPanel implements Runnable{
             lastTime = currentTime;
 
             if(delta >= drawInterval){
+                
                 update();
                 repaint();
+
                 delta -= drawInterval;
                 drawCount++;
             }
@@ -58,18 +66,28 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
 
-    public void update(){
-        if(keyH.upPressed){
-            boxY -= boxSpeed;
+    public void update(){       
+        if(boxY + boxH < 600 && boxSpeedY < maxSpeedY){            
+            boxSpeedY++;
+        }        
+        if(boxY + boxH > 600){
+            boxSpeedY = 0;
+            if(!keyH.spacePressed) jumpFlag = true;
         }
-        if(keyH.downPressed){
-            boxY += boxSpeed;
+
+
+        if(keyH.spacePressed && jumpFlag){
+            boxSpeedY = -maxSpeedY;
+            jumpFlag = false;
         }
-        if(keyH.leftPressed){
-            boxX -= boxSpeed;
+
+        boxY += boxSpeedY;
+
+        if(keyH.leftPressed && boxX >= 5){
+            boxX -= 5;
         }
-        if(keyH.rightPressed){
-            boxX += boxSpeed;
+        if(keyH.rightPressed && boxX + boxW <= 1275){
+            boxX += 5;
         }
 
     }
@@ -78,8 +96,11 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+        g2.setColor(new Color(150, 150, 150));
+        g2.fillRect(0, 610, Main.width, 75);
+
         g2.setColor(Color.white);
-        g2.fillRect(boxX, boxY, 10, 10);
+        g2.fillRect(boxX, boxY, boxW, boxH);
 
         g2.dispose();
     }
