@@ -21,7 +21,7 @@ public class Bot {
         thinkSetup();
 
         Random rand = new Random();
-        int random = rand.nextInt(4);
+        int random = rand.nextInt(3);
         if(random != 0) start = false;
 
         if(start){
@@ -95,6 +95,7 @@ public class Bot {
             if(tiles[i] == 0){
                 tiles[i] = 1;
                 if(game.check() == 1){
+                    game.tiles[i] = 1;
                     Main.gp.tileButton[i].setForeground(Color.red);
                     Main.gp.tileButton[i].setText("X");
                     return -7;
@@ -111,6 +112,7 @@ public class Bot {
             if(tiles[i] == 1){
                 tiles[i] = 2;
                 if(game.check() == 2){
+                    game.tiles[i] = 2;
                     Main.gp.tileButton[i].setForeground(Color.red);
                     Main.gp.tileButton[i].setText("O");
                     return -7;
@@ -154,13 +156,21 @@ public class Bot {
     void think(){
         Main.gp.label.setText("Bot is thinking.");
 
+        if(game.turn != game.maxTurn - 1){
+            labelTimer1.start();
+            labelTimer2.start();
+        }
+        else thinkSetup();
+
         playTimer.start();
-        labelTimer1.start();
-        labelTimer2.start();
     }
 
     void thinkSetup(){
-        playTimer = new Timer(3000, e -> {
+        int delay = 3000;
+
+        if(game.turn == game.maxTurn - 1) delay = 0;
+
+        playTimer = new Timer(delay, e -> {
             int choice = game.ai.botPlay();
 
             if(choice == -7){

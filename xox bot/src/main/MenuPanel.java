@@ -65,6 +65,7 @@ public class MenuPanel extends JPanel implements ActionListener {
                 Main.gp.tileButton[i].setText("");
             }
             Main.gp.gameRunner(false);
+            Main.gp.reset.setVisible(false);
             Main.cl.show(Main.panel, "1");
         }
 
@@ -73,6 +74,7 @@ public class MenuPanel extends JPanel implements ActionListener {
                 Main.gp.tileButton[i].setText("");
             }
             Main.gp.gameRunner(true);
+            Main.gp.reset.setVisible(false);
             Main.cl.show(Main.panel, "1");
         }
 

@@ -38,3 +38,8 @@ public class Main{
         window.validate();
     }
 }
+
+
+//  Mert Gürer
+//  30.07.2022
+//  02.08.2022

@@ -9,12 +9,15 @@ import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel implements ActionListener{
 
+    Graphics2D g2;
     Game game;
     public JButton[] tileButton = new JButton[9];
     JLabel label;
     BackButton back;
+    public ResetButton reset;
     boolean enabled;
     boolean bot;
+    int winCount = 0;
 
     public GamePanel(){
         this.setBackground(new Color(160,152,114));
@@ -23,6 +26,9 @@ public class GamePanel extends JPanel implements ActionListener{
 
         back = new BackButton(10,10, 80,80);
         back.addActionListener(this);
+        reset = new ResetButton(565, 150, 150,60);
+        reset.addActionListener(this);
+        reset.setVisible(false);
 
         label = new JLabel();
         label.setFont(new Font("a",Font.BOLD, 50));
@@ -52,17 +58,18 @@ public class GamePanel extends JPanel implements ActionListener{
 
         this.add(label);
         this.add(back);
+        this.add(reset);
     }
 
     public void gameRunner(boolean bot){
         this.bot = bot;
-        game = new Game(bot);
+        game = new Game(bot, g2);
         enabled = true;
     }
 
     public void paint(Graphics g){
         super.paint(g);
-        Graphics2D g2 = (Graphics2D)g;
+        g2 = (Graphics2D)g;
 
         g2.setColor(Color.black);
 
@@ -73,15 +80,57 @@ public class GamePanel extends JPanel implements ActionListener{
         g2.fillRoundRect(395, 410, 490, 20, 25, 25);
         g2.fillRoundRect(395, 580, 490, 20, 25, 25);
 
+        if(reset.isVisible()){
+            g2.setColor(new Color(70,120,80));
+
+            // row wins
+            if(game.tiles[0] == game.tiles[1] && game.tiles[1] == game.tiles[2] && game.tiles[0] != 0){
+                g2.fillRoundRect(tileButton[0].getX() + 20, tileButton[0].getY() + tileButton[0].getHeight()/2, 440, 5, 30,30);
+            }
+            if(game.tiles[3] == game.tiles[4] && game.tiles[4] == game.tiles[5] && game.tiles[3] != 0) {
+                g2.fillRoundRect(tileButton[3].getX() + 20, tileButton[3].getY() + tileButton[3].getHeight()/2, 440, 5, 30,30);
+            }
+            if(game.tiles[6] == game.tiles[7] && game.tiles[7] == game.tiles[8] && game.tiles[6] != 0) {
+                g2.fillRoundRect(tileButton[6].getX() + 20, tileButton[6].getY() + tileButton[6].getHeight()/2, 440, 5, 30,30);
+            }
+            // column wins
+            if(game.tiles[0] == game.tiles[3] && game.tiles[3] == game.tiles[6] && game.tiles[0] != 0) {
+                g2.fillRoundRect(tileButton[0].getX() + tileButton[0].getWidth()/2, tileButton[0].getY() + 20, 5, 440, 30,30);
+            }
+            if(game.tiles[1] == game.tiles[4] && game.tiles[4] == game.tiles[7] && game.tiles[1] != 0){
+                g2.fillRoundRect(tileButton[1].getX() + tileButton[1].getWidth()/2, tileButton[1].getY() + 20, 5, 440, 30,30);
+            }
+            if(game.tiles[2] == game.tiles[5] && game.tiles[5] == game.tiles[8] && game.tiles[2] != 0){
+                g2.fillRoundRect(tileButton[2].getX() + tileButton[2].getWidth()/2, tileButton[2].getY() + 20, 5, 440, 30,30);
+            }
+            // diagonal wins
+            if(game.tiles[0] == game.tiles[4] && game.tiles[4] == game.tiles[8] && game.tiles[0] != 0){
+                g2.rotate(0.785398, tileButton[4].getX() + (double)tileButton[4].getWidth() / 2, tileButton[4].getY() + (double)tileButton[4].getHeight()/2);
+                g2.fillRoundRect(tileButton[3].getX() - 80, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
+            }
+            if(game.tiles[2] == game.tiles[4] && game.tiles[4] == game.tiles[6] && game.tiles[2] != 0){
+                g2.rotate(-0.785398, tileButton[4].getX() + (double)tileButton[4].getWidth() / 2, tileButton[4].getY() + (double)tileButton[4].getHeight()/2);
+                g2.fillRoundRect(tileButton[3].getX() - 80, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
+            }
+        }
         g2.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         boolean valid = false;
+        boolean end = false;
 
         if(e.getSource() == back){
             Main.cl.show(Main.panel, "0");
+        }
+        if(e.getSource() == reset){
+            for(int i=0; i<9; i++){
+                Main.gp.tileButton[i].setText("");
+            }
+            Main.gp.gameRunner(this.bot);
+            reset.setVisible(false);
+            Main.gp.validate();
         }
         if(e.getSource() == tileButton[0] && enabled){
             if(game.tiles[0] == 0){
@@ -228,13 +277,17 @@ public class GamePanel extends JPanel implements ActionListener{
                     back.setEnabled(false);
                     game.ai.think();
                 }
-                else game.gameCheck();
             }
             else{
                 String text = (game.turn % 2 == 0) ? "X's turn" : "O's turn";
                 label.setText(text);
-                game.gameCheck();
             }
+            end = game.gameCheck();
+        }
+
+        if(end){
+            reset.setVisible(true);
+            Main.gp.validate();
         }
     }
 }

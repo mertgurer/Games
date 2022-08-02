@@ -2,15 +2,19 @@ package src.game;
 
 import src.main.Main;
 
+import java.awt.*;
+
 public class Game {
 
+    Graphics2D g2;
     Bot ai;
     boolean bot;
     int turn;
     int maxTurn;
     int[] tiles;
 
-    Game(boolean bot){
+    Game(boolean bot, Graphics2D g2){
+        this.g2 = g2;
         this.bot = bot;
         turn = 0;
         maxTurn = 9;
@@ -32,11 +36,13 @@ public class Game {
         }
     }
 
-    void gameCheck(){
+    boolean gameCheck(){
         int result = check();
         if(result != 0 || turn == maxTurn){
             end(result);
+            return true;
         }
+        return false;
     }
 
     int check(){
@@ -53,11 +59,19 @@ public class Game {
 
     void end(int result){
         Main.gp.enabled = false;
+        Main.gp.reset.setVisible(true);
 
         if(bot)
         {
             if(result != 0){
                 Main.gp.label.setText("Bot wins :)");
+                Main.gp.winCount++;
+
+                if(Main.gp.winCount == 3) Main.gp.label.setText("I hope i am not to hard for you :(");
+                if(Main.gp.winCount == 4) Main.gp.label.setText("You are trying right.");
+                if(Main.gp.winCount == 5) Main.gp.label.setText("Are all humans this stupid?");
+                if(Main.gp.winCount == 7) Main.gp.label.setText("Turning one of my cores off.");
+                if(Main.gp.winCount == 10) Main.gp.label.setText("I am only using %2 of my power.");
             }
             else Main.gp.label.setText("Draw!");
         }
