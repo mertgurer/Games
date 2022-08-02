@@ -1,4 +1,4 @@
-package src.main;
+package src.menu;
 
 import javax.swing.*;
 import javax.swing.border.Border;

@@ -1,4 +1,6 @@
-package src.main;
+package src.menu;
+
+import src.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     int x = (Main.width/2) - (bWidth/2);
     int y = (Main.height/2) - (bHeight/2);
 
-    MenuPanel(){
+    public MenuPanel(){
         this.setBackground(new Color(160,152,114));
         this.setSize(Main.width, Main.height);
         this.setLayout(null);

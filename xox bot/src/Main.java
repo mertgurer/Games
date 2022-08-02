@@ -1,6 +1,7 @@
-package src.main;
+package src;
 
 import src.game.GamePanel;
+import src.menu.MenuPanel;
 
 import javax.swing.*;
 import java.awt.*;

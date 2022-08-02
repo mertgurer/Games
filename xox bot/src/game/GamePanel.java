@@ -1,6 +1,6 @@
 package src.game;
 
-import src.main.Main;
+import src.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -112,6 +112,7 @@ public class GamePanel extends JPanel implements ActionListener{
                 g2.rotate(-0.785398, tileButton[4].getX() + (double)tileButton[4].getWidth() / 2, tileButton[4].getY() + (double)tileButton[4].getHeight()/2);
                 g2.fillRoundRect(tileButton[3].getX() - 80, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
             }
+            this.validate();
         }
         g2.dispose();
     }

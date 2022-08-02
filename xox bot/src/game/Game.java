@@ -1,6 +1,6 @@
 package src.game;
 
-import src.main.Main;
+import src.Main;
 
 import java.awt.*;
 
