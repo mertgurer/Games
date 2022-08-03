@@ -4,9 +4,9 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class Button extends JButton {
+public class BaseButton extends JButton {
 
-    public Button(int x, int y, int width, int height,String name){
+    public BaseButton(int x, int y, int width, int height, String name){
         this.setBounds(x, y, width, height);
         this.setText(name);
 

@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel implements ActionListener {
 
-    Button start;
-    Button ai;
-    Button exit;
+    BaseButton start;
+    BaseButton ai;
+    BaseButton exit;
 
     int bWidth = 250;
     int bHeight = 75;
@@ -24,17 +24,17 @@ public class MenuPanel extends JPanel implements ActionListener {
         this.setSize(Main.width, Main.height);
         this.setLayout(null);
 
-        start = new Button(x, y ,bWidth, bHeight, "Play with Friend");
+        start = new BaseButton(x, y ,bWidth, bHeight, "Play with Friend");
         start.addActionListener(this);
 
         y += bHeight + 10;
 
-        ai = new Button(x, y ,bWidth, bHeight, "AI Challenge");
+        ai = new BaseButton(x, y ,bWidth, bHeight, "AI Challenge");
         ai.addActionListener(this);
 
         y += bHeight + 10;
 
-        exit = new Button(x, y ,bWidth, bHeight, "Exit");
+        exit = new BaseButton(x, y ,bWidth, bHeight, "Exit");
         exit.addActionListener(this);
 
         this.add(start);
