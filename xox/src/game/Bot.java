@@ -21,7 +21,7 @@ public class Bot {
         thinkSetup();
 
         Random rand = new Random();
-        int random = rand.nextInt(3);
+        int random = rand.nextInt(4);
         if(random != 0) start = false;
 
         if(start){
@@ -58,6 +58,7 @@ public class Bot {
 
             while(true){
                 int hack = hackPick();
+
 
                 if(hack == 0){
                     if(switcheroo(game.tiles) == -7){
@@ -125,6 +126,70 @@ public class Bot {
 
     // 2nd hack puts its symbol outside to finnish before the opponent
     int outOfBoundries(int[] tiles){
+        // top left // from diagonal
+        if(game.tiles[7] == game.tiles[3] && game.tiles[7] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 0;
+            Main.gp.extra.setBounds(230, 265, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // bottom left // from diagonal
+        if(game.tiles[1] == game.tiles[3] && game.tiles[1] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 1;
+            Main.gp.extra.setBounds(230, 605, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // top right // from diagonal
+        if(game.tiles[7] == game.tiles[5] && game.tiles[7] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 2;
+            Main.gp.extra.setBounds(910, 265, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // bottom right // from diagonal
+        if(game.tiles[1] == game.tiles[5] && game.tiles[1] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 3;
+            Main.gp.extra.setBounds(910, 605, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // top left // from straight
+        if(game.tiles[0] == game.tiles[1] && game.tiles[0] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 4;
+            Main.gp.extra.setBounds(230, 265, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // bottom left // from straight
+        if(game.tiles[6] == game.tiles[7] && game.tiles[6] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 5;
+            Main.gp.extra.setBounds(230, 605, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // top right // from straight
+        if(game.tiles[1] == game.tiles[2] && game.tiles[1] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 6;
+            Main.gp.extra.setBounds(910, 265, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
+        // bottom right // from straight
+        if(game.tiles[7] == game.tiles[8] && game.tiles[7] == 2){
+            game.end(-7);
+            Main.gp.extraPos = 7;
+            Main.gp.extra.setBounds(910, 605, 140, 140);
+            Main.gp.extra.setVisible(true);
+            return -7;
+        }
 
         return 0;
     }

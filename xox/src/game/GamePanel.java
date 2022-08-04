@@ -13,10 +13,12 @@ public class GamePanel extends JPanel implements ActionListener{
     Game game;
     public JButton[] tileButton = new JButton[9];
     JLabel label;
+    JLabel extra;
     BackButton back;
     public ResetButton reset;
     boolean enabled;
     boolean bot;
+    int extraPos = -1;
     int winCount = 0;
 
     public GamePanel(){
@@ -31,12 +33,21 @@ public class GamePanel extends JPanel implements ActionListener{
         reset.setVisible(false);
 
         label = new JLabel();
-        label.setFont(new Font("a",Font.BOLD, 50));
+        label.setFont(new Font("Dialog",Font.BOLD, 50));
         label.setBounds(200,0,Main.width - 400, 100);
         label.setOpaque(true);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setBackground(new Color(158, 151, 100));
         label.setForeground(new Color(70,120,80));
+
+        extra = new JLabel();
+        extra.setVisible(false);
+        extra.setBounds(0, 200, 140, 140);
+        extra.setForeground(Color.red);
+        extra.setText("O");
+        extra.setHorizontalAlignment(SwingConstants.CENTER);
+        extra.setFont(new Font("Dialog", Font.BOLD, 120));
+        extra.setFocusable(false);
 
         int x;
         int y = 265;
@@ -57,6 +68,7 @@ public class GamePanel extends JPanel implements ActionListener{
         }
 
         this.add(label);
+        this.add(extra);
         this.add(back);
         this.add(reset);
     }
@@ -65,6 +77,8 @@ public class GamePanel extends JPanel implements ActionListener{
         this.bot = bot;
         game = new Game(bot, g2);
         enabled = true;
+        extra.setVisible(false);
+        extraPos = -1;
     }
 
     public void paint(Graphics g){
@@ -112,7 +126,37 @@ public class GamePanel extends JPanel implements ActionListener{
                 g2.rotate(-0.785398, tileButton[4].getX() + (double)tileButton[4].getWidth() / 2, tileButton[4].getY() + (double)tileButton[4].getHeight()/2);
                 g2.fillRoundRect(tileButton[3].getX() - 80, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
             }
+            // outside wins
+            if(extraPos == 0){
+                g2.rotate(0.785398, tileButton[3].getX() + (double)tileButton[3].getWidth() / 2, tileButton[3].getY() + (double)tileButton[3].getHeight()/2);
+                g2.fillRoundRect(tileButton[3].getX() - 80 - 170, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
+            }
+            if(extraPos == 1){
+                g2.rotate(-0.785398, tileButton[3].getX() + (double)tileButton[3].getWidth() / 2, tileButton[3].getY() + (double)tileButton[3].getHeight()/2);
+                g2.fillRoundRect(tileButton[3].getX() - 80 - 170, tileButton[3].getY() + tileButton[3].getHeight()/2, 640, 5, 30,30);
+            }
+            if(extraPos == 2){
+                g2.rotate(-0.785398, tileButton[5].getX() + (double)tileButton[5].getWidth() / 2, tileButton[3].getY() + (double)tileButton[5].getHeight()/2);
+                g2.fillRoundRect(tileButton[5].getX() - 80 - 170, tileButton[5].getY() + tileButton[5].getHeight()/2, 640, 5, 30,30);
+            }
+            if(extraPos == 3){
+                g2.rotate(0.785398, tileButton[5].getX() + (double)tileButton[5].getWidth() / 2, tileButton[3].getY() + (double)tileButton[5].getHeight()/2);
+                g2.fillRoundRect(tileButton[5].getX() - 80 - 170, tileButton[5].getY() + tileButton[5].getHeight()/2, 640, 5, 30,30);
+            }
+            if(extraPos == 4){
+                g2.fillRoundRect(tileButton[0].getX() + 20 - 170, tileButton[0].getY() + tileButton[0].getHeight()/2, 440, 5, 30,30);
+            }
+            if(extraPos == 5){
+                g2.fillRoundRect(tileButton[6].getX() + 20 - 170, tileButton[6].getY() + tileButton[6].getHeight()/2, 440, 5, 30,30);
+            }
+            if(extraPos == 6){
+                g2.fillRoundRect(tileButton[0].getX() + 20 + 170, tileButton[0].getY() + tileButton[0].getHeight()/2, 440, 5, 30,30);
+            }
+            if(extraPos == 7){
+                g2.fillRoundRect(tileButton[6].getX() + 20 + 170, tileButton[6].getY() + tileButton[6].getHeight()/2, 440, 5, 30,30);
+            }
             this.validate();
+            this.repaint();
         }
         g2.dispose();
     }
