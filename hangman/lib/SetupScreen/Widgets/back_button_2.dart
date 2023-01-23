@@ -12,8 +12,8 @@ class BackHomeButton2 extends StatelessWidget {
         HomePage.counter = 0;
       },
       style: ElevatedButton.styleFrom(
-        primary: Colors.blue.shade300,
-        onPrimary: Colors.black,
+        backgroundColor: Colors.blue.shade300,
+        foregroundColor: Colors.black,
       ),
       child: const Icon(Icons.arrow_back),
     );

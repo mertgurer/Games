@@ -20,8 +20,8 @@ class CategoryButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
           fixedSize: const Size(135, 0),
-          primary: Colors.blue.shade300,
-          onPrimary: Colors.black),
+          backgroundColor: Colors.blue.shade300,
+          foregroundColor: Colors.black),
       child: Text(name),
     );
   }
