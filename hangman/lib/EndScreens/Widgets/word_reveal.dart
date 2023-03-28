@@ -24,10 +24,22 @@ class WordReveal extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'The word was $wordShort',
-            style: const TextStyle(
-              fontSize: 20,
+          RichText(
+            text: TextSpan(
+              text: 'The word was ',
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
+              children: [
+                TextSpan(
+                  text: wordShort,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
           Text(
